@@ -28,7 +28,7 @@ jobs:
         shell: bash
 
       - name: Build with Gradle
-        working-directory: ./server-app
+        working-directory: ./test
         run: ./gradlew clean build
         shell: bash
 

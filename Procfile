@@ -1,0 +1,1 @@
+web: java -jar test-1.jar

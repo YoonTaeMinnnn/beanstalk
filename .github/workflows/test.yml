@@ -3,8 +3,7 @@ name: test
 on:
   push:
     branched:
-      - master # action 트리거 브랜치
-  workflow_dispatch: # 수동 실행 옵션 (생략)
+      - master 
 
 jobs:
   build:
@@ -24,8 +23,8 @@ jobs:
 
 
       - name: Grant execute permission for gradlew
-        working-directory: ../../test
-        run: chmod +x ./gradlew
+        working-directory: ./test
+        run: chmod +x ./test/gradlew
         shell: bash
 
       - name: Build with Gradle
@@ -43,10 +42,10 @@ jobs:
       - name: Generate deployment package
         run: |
           mkdir -p deploy
-          cp server-app/build/libs/server-app.jar deploy/todo-application-prod-ebextensions-1.jar
+          cp test/build/libs/test.jar deploy/test-1.jar
           cp Procfile deploy/Procfile
           cp -r .ebextensions deploy/.ebextensions
-          cd deploy && zip -r todo-application-prod-label-${{steps.current-time.outputs.formattedTime}}-${{github.sha}} .
+          cd deploy && zip -r test-${{steps.current-time.outputs.formattedTime}}-${{github.sha}} .
 
       - name: Deploy Consumer to EB
         uses: einaregilsson/beanstalk-deploy@v14

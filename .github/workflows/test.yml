@@ -56,4 +56,4 @@ jobs:
           environment_name: Test-env-1
           version_label: test #test-label-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}
           region: ap-northeast-2
-          deployment_package: deploy/test-label-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}.zip
+          #deployment_package: deploy/test-label-${{steps.current-time.outputs.formattedTime}}-${{github.sha}}.zip
